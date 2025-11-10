@@ -14,10 +14,12 @@ extend the following prompt with a clearer workflow definition and detailed task
 # Step 2 (Query pipe):
 **cli**:
 @ cli start: create json file from created graph
-- define workflow: function: receive string -> redirect to file search followign docs here: "https://ai.google.dev/gemini-api/docs/file-search?hl=de" with static pormpt and graph file. return: list[str] node_ids components 
+- define workflow: function: receive string -> create 5 versions of prompt using a local llm downloadable with pip -> embed them -> loop all nodes of the graph embed nid local  perform similarity-serach(ss) ->
+  save all in dict(nid:score)
+- loop nids with sc > .9:  
   - include a pathfinding algirithmus whcih receivesa nid of a specific datatype e.g. class-> get_node(nid) -> get_neighbors rel="needs" -> collect neighbor nodes global in class attr "self.pathway_nodes"->           repeat process from AAA; output: all nods used by a specific datatype (like class) and allits sub modules  
   - for all params used(method/class header) by specific datatype: collect data from .env file (open...)
-  - def: create and load entire str code base executable in ray.remote -> run function
+- def: create and load entire combined str code base executable -> run function
 
 
 extras:
