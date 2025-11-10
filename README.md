@@ -20,8 +20,9 @@ extract content each file add_node file_name -> use ast: identify all present da
   
 
 # Relay remote
-- receive query string -> classify to options: run, adapt,  = keys of dict, create 5 versions of prompt using a local llm downloadable with pip > 
-- answer handling for actions that has been performed. add here qa functionaity in harmony to the terminal input field (render) 
+- receive query string -> classify to options: run, adapt,  = keys of dict, create 5 versions of prompt using a local llm downloadable with pip >
+- 
+- qa handling for actions that has been performed. add here qa functionaity in harmony to the terminal input field (render) 
 
 # Collector remote
 receive list query
