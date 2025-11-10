@@ -5,15 +5,16 @@ synthax:
 "->" next pathway step
 "-->" edge connect 
 
+
 extend the following prompt with a clearer workflow definition and detailed tasks to improve the provided Code Module:
 - create nx.MiltiDiGraph -> walk local dir (exclude .venv) -> extract content each file add_node file_name -> use ast: identify all present datatypes in each file -> extract and classify all content -> add_node for each with the parent=[parent file-node] and type=datatype(class, def, comment) ´, embed datatype (class/method etc) (only node keys wrapped inside dict(embedding, nid, t, type, code)
 - collect all packages specified in r.txt -> add_node(dict(nid, package instance, embed description) 
 - scan each datatype for sub modules/classes/functions/motheds/packages used from outer space -> link logical to destination(e.g. method A defines a class inside from external) -> add_edge with rel="uses" - classify directions (seppare between imports or imported)
   
 
-# Step 2 (Query pipe):
-**cli**:
-@ cli start: create json file from created graph
+
+
+# Executor remote
 - define workflow: function: receive string -> create 5 versions of prompt using a local llm downloadable with pip -> embed them -> loop all nodes of the graph embed nid local  perform similarity-serach(ss) ->
   save all in dict(nid:score)
 - loop nids with sc > .9:  
@@ -22,9 +23,21 @@ extend the following prompt with a clearer workflow definition and detailed task
 - def: create and load entire combined str code base executable -> run function
 
 
+
+# Debugger remote
+- while loop all files in dir tmp/ray/session_latest: embed content perform classification "err" or "clean" if "err": extract pid from file_name.split(-)-1.split(.)0 -> extract ray actor handle by pid -> get code from remote name (find in graph) -> llm call input: error from file, detailed debug isntructions formulated based on error, . required output: adapted python string -> switch code in graph, keep prev code in "cache":str attr -> delete err file content   
+
+
+
+
+**cli**:
+@ cli start: create json file from created graph
+list options that controll all class executions
+
 extras:
 - use clear oneliner comments before each fuction/method call and at the start of each method to intepret
 - use creative emojicons
+- include th eentire setp to init and run ray 
 - include a r.txt (requiremens)
 - follow functiona call schema from provided py content
 - define the entire codebase inside a single file
