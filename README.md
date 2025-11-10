@@ -6,18 +6,22 @@ synthax:
 "-->" edge connect 
 "- receive code str ->" rcs
 
-extend the following prompt with a clearer workflow definition and detailed tasks to improve the provided Code Module:
+extend and run the following prompt with a clearer workflow definition and detailed tasks to improve the provided Code Module:
+
+# ADD_CODE_GRAPH 
+extract content each file add_node file_name -> use ast: identify all present datatypes in each file -> extract and classify all content -> add_node for each with the parent=[parent file-node] and type=datatype(class, def, comment) ´, embed datatype (class/method etc) (only node keys wrapped inside dict(embedding, nid, t, type, code)
+- collect all packages specified in r.txt -> add_node(dict(nid, package instance, embed description) 
+- scan each datatype for sub modules/classes/functions/motheds/packages used from outer space -> link logical to destination(e.g. method A defines a class inside from external) -> add_edge with rel="uses" - classify directions (seppare between imports or imported)
+
 
 # Graph Engine
 - - create nx.MiltiDiGraph
-  - 
-- walk local dir (exclude .venv) -> extract content each file add_node file_name -> use ast: identify all present datatypes in each file -> extract and classify all content -> add_node for each with the parent=[parent file-node] and type=datatype(class, def, comment) ´, embed datatype (class/method etc) (only node keys wrapped inside dict(embedding, nid, t, type, code)
-- collect all packages specified in r.txt -> add_node(dict(nid, package instance, embed description) 
-- scan each datatype for sub modules/classes/functions/motheds/packages used from outer space -> link logical to destination(e.g. method A defines a class inside from external) -> add_edge with rel="uses" - classify directions (seppare between imports or imported)
+
+- walk local dir (exclude .venv) -> ADD_CODE_GRAPH
   
 
 # Relay remote
-- receive query string -> classify to options: run, adapt = keys of dict, create 5 versions of prompt using a local llm downloadable with pip > 
+- receive query string -> classify to options: run, adapt,  = keys of dict, create 5 versions of prompt using a local llm downloadable with pip > 
 
 
 # Collector remote
@@ -36,7 +40,7 @@ receive list query
 - rcs -> llm call gem cli py client: static prompt: perform change on files -> write changes to Graph
 
 # creator
-- rcs -> 
+- rcs -> gem api call: create code base -> ADD_CODE_GRAPH
 
 
 # Debugger remote
@@ -49,8 +53,8 @@ run the extend and inmproved prompt to ensure functionality
 - use creative emojicons
 - include th eentire setp to init and run ray 
 - include a r.txt (requiremens)
-- follow functiona call schema from provided py content
+- proviede functional profduction ready code
 - define the entire codebase inside a single file
 - define a clear step by step workflow hat executes each possibel cli action wrapped isnide a testing def and if name amin call
 - include funcitnoality to load picked datatypes(fucntions & classes) for all defined workflows inisde a ray.remote
-- use pyvis for rendering the generated graph file
+- use pyvis for rendering the generated graph file -> save the generated html file in content root
