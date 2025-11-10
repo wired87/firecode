@@ -16,13 +16,12 @@ extract content each file add_node file_name -> use ast: identify all present da
 
 # Graph Engine
 - - create nx.MiltiDiGraph
-
 - walk local dir (exclude .venv) -> ADD_CODE_GRAPH
   
 
 # Relay remote
 - receive query string -> classify to options: run, adapt,  = keys of dict, create 5 versions of prompt using a local llm downloadable with pip > 
-
+- answer handling for actions that has been performed. add here qa functionaity in harmony to the terminal input field (render) 
 
 # Collector remote
 receive list query
@@ -43,6 +42,15 @@ receive list query
 - rcs -> gem api call: create code base -> ADD_CODE_GRAPH
 
 
+# ui
+**terminal based ui to interact with the engine:**
+- incldue state management, issue / submit handling and possibility to query the engine with relay as first contact after query input
+- welcome message
+- render possible options numbered 
+- answer / follow up question handling
+
+# 
+
 # Debugger remote
 - while loop all files in dir tmp/ray/session_latest: embed content perform classification "err" or "clean" if "err": extract pid from file_name.split(-)-1.split(.)0 -> extract ray actor handle by pid -> get code from remote name (find in graph) -> llm call input: error from file, detailed debug isntructions formulated based on error, . required output: adapted python string -> switch code in graph, keep prev code in "cache":str attr -> delete err file content   
 
@@ -50,10 +58,10 @@ run the extend and inmproved prompt to ensure functionality
 
 # extras:
 - use clear oneliner comments before each fuction/method call and at the start of each method to intepret
-- use creative emojicons
-- include th eentire setp to init and run ray 
+- use creative prints with emojicons
+- include th entire setup to init and run ray 
 - include a r.txt (requiremens)
-- proviede functional profduction ready code
+- proviede working ready2use code
 - define the entire codebase inside a single file
 - define a clear step by step workflow hat executes each possibel cli action wrapped isnide a testing def and if name amin call
 - include funcitnoality to load picked datatypes(fucntions & classes) for all defined workflows inisde a ray.remote
