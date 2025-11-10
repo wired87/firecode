@@ -38,9 +38,6 @@ receive list query
 - while loop all files in dir tmp/ray/session_latest: embed content perform classification "err" or "clean" if "err": extract pid from file_name.split(-)-1.split(.)0 -> extract ray actor handle by pid -> get code from remote name (find in graph) -> llm call input: error from file, detailed debug isntructions formulated based on error, . required output: adapted python string -> switch code in graph, keep prev code in "cache":str attr -> delete err file content   
 
 
-# cli:
-@ cli start: create json file from created graph
-- query : 
 
 # extras:
 - use clear oneliner comments before each fuction/method call and at the start of each method to intepret
