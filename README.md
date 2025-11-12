@@ -32,20 +32,14 @@ rlp -> collect all nodes with type=MODULE ->  perform ss embed_description to
 - rlp -> convert to 5 search queries -> gsearch request -> embed and save page content first 5 pages (non ads) in table format within local vs. -> extract: pip packages required for this task -> run subprocess -> load packages in Graph (nid=package_name, ref=package_instance)
 
 
-
 # ADD_CODE_GRAPH 
- use ast: identify all present datatypes in each file -> extract and classify all content -> add_node for each with the parent=[parent file-node] and type=datatype(class, def, comment) ´, embed datatype (class/method etc) (only node keys wrapped inside dict(embedding, nid, t, type, code)
+ use ast: identify all present datatypes in each file -> extract and classify all content -> add_node for each with the parent=[parent file-node] and type=datatype(class, def, comment) ´, embed datatype (class/method etc) (only node keys wrapped inside dict(embedding(364dim), nid, t, type, code)
 - collect all packages specified in r.txt -> add_node(dict(nid, package instance, embed description) 
 - scan each datatype for sub modules/classes/functions/motheds/packages used from outer space -> link logical to destination(e.g. method A defines a class inside from external) -> add_edge with rel="uses" - classify directions (seppare between imports or imported)
-
 
 # Graph Engine
 - - create nx.MiltiDiGraph
 - walk local dir (exclude .venv) -> add_node all folders type = MODULE, description=embed(llm file request: sum content within  -> extract content each file add_node file_name -> add_edge file_name --> module rel=has_file, ADD_CODE_GRAPH
-  
-
-
-
 
 
 # Collector remote
@@ -56,26 +50,29 @@ receive list query
   - include a pathfinding algirithmus whcih receivesa nid of a specific datatype e.g. class-> get_node(nid) -> get_neighbors rel="needs" -> collect neighbor nodes global in class attr "self.pathway_nodes"-> repeat process from AAA; output: all nods used by a specific datatype (like class) and allits sub modules  
   - for all params used(method/class header) by specific datatype: collect data from .env file (open...)
   - collect the sorted and runnable code structure incl all variables as str -> return
+
  
 # Executor remote
-- rcs -> runnable and executte it by collectig all apckages from code Graph
+- rcs -> create runnable end executes the sorted codebase to avoid any issues(like import error) inside a ray.remote -> ADD_CODE_GRAPH(with adapted code)
+
 
 # editor
-- rcs -> llm call gem cli py client: static prompt: perform change on files -> write changes to Graph
+- rcs -> llm call gem cli py client: static prompt: perform change on files -> ADD_CODE_GRAPH(generated code content)
+
 
 # creator 
 - rlp -> gem api call: create code base -> ADD_CODE_GRAPH
 
 
-
 # ui
 **terminal based ui to interact with the engine:**
+- entry point for the entire script
 - incldue state management, issue / submit handling and possibility to query the engine with relay as first contact after query input
 - welcome message
 - render possible options numbered 
 - answer / follow up question handling
+- direct entry point to Relay 
   
-
 # Debugger remote
 - while loop all files in dir tmp/ray/session_latest: embed content perform classification "err" or "clean" if "err": extract pid from file_name.split(-)-1.split(.)0 -> extract ray actor handle by pid -> get code from remote name (find in graph) -> llm call input: error from file, detailed debug isntructions formulated based on error, . required output: adapted python string -> switch code in graph, keep prev code in "cache":str attr -> delete err file content   
 
@@ -84,11 +81,8 @@ run the extend and inmproved prompt to ensure functionality
 
 
 
-
-
-
-
 # extras:
+- main call altiems starts the cli. - user controlls the run of specific functinality based on its quwery input 
 - use clear oneliner comments before each fuction/method call and at the start of each method to intepret
 - use creative prints with emojicons
 - include th entire setup to init and run ray 
