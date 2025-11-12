@@ -13,13 +13,13 @@ legend
 similairity search = ss
 vectro store = vs
 
-extend and run the following prompt with a clearer workflow definition and detailed tasks to improve the provided Code Module. 
+whcih adaptions could be made to the exising pormpt to enure a stable running system? Extend and run the following prompt with a clearer workflow definition and detailed tasks to improve the provided Code Module. 
 
 
 # Relay remote
 - receive query string -> create 5 versions of prompt using a local llm (downloadable with pip) > classifier rlp
 - qa handling for actions that has been performed. add here qa functionaity in harmony to the terminal input field (render)
-
+- 
 
 # Classifier
 rlp -> collect all nodes with type=MODULE ->  perform ss embed_description to 
@@ -35,7 +35,7 @@ rlp -> collect all nodes with type=MODULE ->  perform ss embed_description to
 # ADD_CODE_GRAPH 
  use ast: identify all present datatypes in each file -> extract and classify all content -> add_node for each with the parent=[parent file-node] and type=datatype(class, def, comment) ´, embed datatype (class/method etc) (only node keys wrapped inside dict(embedding(364dim), nid, t, type, code)
 - collect all packages specified in r.txt -> add_node(dict(nid, package instance, embed description) 
-- scan each datatype for sub modules/classes/functions/motheds/packages used from outer space -> link logical to destination(e.g. method A defines a class inside from external) -> add_edge with rel="uses" - classify directions (seppare between imports or imported)
+- scan each datatype for sub modules/classes/functions/motheds/packages used from outer space -> link logical to destination(e.g. method A defines a class inside from external) -> add_edge with rel="uses" - classify directions (seppare between imports or imported) -> nx.link_node_data & pyvis render -> save files (json & html) in root
 
 # Graph Engine
 - - create nx.MiltiDiGraph
@@ -79,8 +79,6 @@ receive list query
 run the extend and inmproved prompt to ensure functionality
 
 
-
-
 # extras:
 - main call altiems starts the cli. - user controlls the run of specific functinality based on its quwery input 
 - use clear oneliner comments before each fuction/method call and at the start of each method to intepret
@@ -92,6 +90,5 @@ run the extend and inmproved prompt to ensure functionality
 - each worker must be deployed from 
 - define a clear step by step workflow hat executes each possibel cli action wrapped isnide a testing def and if name amin call
 - include funcitnoality to load picked datatypes(fucntions & classes) for all defined workflows inisde a ray.remote
-- use pyvis for rendering the generated graph file -> save the generated html file in content root
 - define each defined workflow inside a ray.remote
 - use the coding schema of all available files to ensure harmony uniformness
