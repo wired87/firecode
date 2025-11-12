@@ -6,6 +6,7 @@ synthax:
 "-->" = edge connect 
 ">" bring workflows (wf) = together
 "- receive code str ->" = rcs
+"related" - <>
 "receive list prompt" = rlp
 
 
@@ -49,15 +50,14 @@ Provide an entire codebase genrated with your imroved prompt withing a single fi
 CONTEXT:
 
 # Relay remote
-- receive query string -> create 5 versions of prompt using a local llm (downloadable with pip) > classifier rlp
+- receive query string -> create 5 versions of prompt using a gem(genai api call - load env keys)  > classifier rlp to dict[functionality(, runnable def]
 - qa handling for actions that has been performed. add here qa functionaity in harmony to the terminal input field (render)
-- 
+   
+# Globac
+**info** data store for entire configuration objects
 
-# Classifier
-rlp -> collect all nodes with type=MODULE ->  perform ss embed_description to 
 
-
-# Expert 
+# Researcher 
 - - define local vs
   - define static search engine prompt: gather information based specific isntructions to support the underlying goal
   - fetch 
@@ -70,14 +70,18 @@ rlp -> collect all nodes with type=MODULE ->  perform ss embed_description to
 - scan each datatype for sub modules/classes/functions/motheds/packages used from outer space -> link logical to destination(e.g. method A defines a class inside from external) -> add_edge with rel="uses" - classify directions (seppare between imports or imported) -> nx.link_node_data & pyvis render -> save files (json & html) in root -> print_status_G
 
 
-# Graph Engine
-- - create nx.MiltiDiGraph
+# Graph Engine remote
+**info** act as globalvailable graph remote
+- - create nx.MiltiDiGraph 
 - walk local dir (exclude .venv) -> add_node all folders type = MODULE, description=embed(llm file request: sum content within  -> extract content each file add_node file_name -> add_edge file_name --> module rel=has_file, ADD_CODE_GRAPH
+
+
+
 
 
 # Collector remote
 INGEST list query (rlp).
-SEARCH & SCORE: ITERATE through ALL graph nodes. EMBED node ID (nid) locally and PERFORM Similarity Search (ss) against the query embedding. STORE results in dict(nid: score).
+SEARCH & SCORE: ITERATE through ALL graph nodes. ss <> query embedding. STORE results in dict(nid: score).
 FILTER & PATHFIND: ITERATE through nids where score > 0.9.
 EXECUTE bidirectional pathfinding algorithm (get_neighbors rel="needs") starting from each high-score nid (e.g., class/method). AGGREGATE all dependency nodes (including sub-modules) into self.pathway_nodes.
 DATA RESOLUTION: EXTRACT required variable data for collected components (method/class headers) directly from the .env file (Ensure missing variables are flagged).
@@ -91,6 +95,8 @@ FUNCITONALITIES:
 # editor
 - rcs -> llm call gem cli py client: static prompt: perform change on files -> ADD_CODE_GRAPH(generated code content)
 
+# qa 
+- 
 
 # creator 
 - rlp -> gem api call: create code base -> ADD_CODE_GRAPH
