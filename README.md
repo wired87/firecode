@@ -25,10 +25,11 @@ extend and run the following prompt with a clearer workflow definition and detai
 rlp -> collect all nodes with type=MODULE ->  perform ss embed_description to 
 
 
-# researcher 
+# Expert 
 - - define local vs
-  - define static research prompt: gather information based specific isntructions to support the underlying goal
-- rlp -> convert to 5 search queries -> gsearch request -> embed and save page content first 5 pages (non ads) in table format within local vs. -> 
+  - define static search engine prompt: gather information based specific isntructions to support the underlying goal
+  - fetch 
+- rlp -> convert to 5 search queries -> gsearch request -> embed and save page content first 5 pages (non ads) in table format within local vs. -> extract: pip packages required for this task -> run subprocess -> load packages in Graph (nid=package_name, ref=package_instance)
 
 
 
@@ -99,12 +100,4 @@ run the extend and inmproved prompt to ensure functionality
 - include funcitnoality to load picked datatypes(fucntions & classes) for all defined workflows inisde a ray.remote
 - use pyvis for rendering the generated graph file -> save the generated html file in content root
 - define each defined workflow inside a ray.remote
-- use the followig schema for all add_edge - calls:
-  src=,
-  trgt=,
-  attrs=dict(
-      rel=,
-      type=,
-      trgt_layer=,
-      src_layer=,
-  ))
+- use the coding schema of all available files to ensure harmony uniformness
