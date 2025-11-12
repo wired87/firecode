@@ -67,7 +67,7 @@ rlp -> collect all nodes with type=MODULE ->  perform ss embed_description to
 # ADD_CODE_GRAPH 
  use ast: identify all present datatypes in each file -> extract and classify file content -> add_node for each with the parent=[parent file-node] and type=datatype(class, def, comment) ´, embed datatype (class/method etc) (only node keys wrapped inside dict(embedding(364dim), nid, t, type), code make available
 - collect all packages specified in r.txt -> add_node(dict(nid, package instance, embed description) 
-- scan each datatype for sub modules/classes/functions/motheds/packages used from outer space -> link logical to destination(e.g. method A defines a class inside from external) -> add_edge with rel="uses" - classify directions (seppare between imports or imported) -> nx.link_node_data & pyvis render -> save files (json & html) in root
+- scan each datatype for sub modules/classes/functions/motheds/packages used from outer space -> link logical to destination(e.g. method A defines a class inside from external) -> add_edge with rel="uses" - classify directions (seppare between imports or imported) -> nx.link_node_data & pyvis render -> save files (json & html) in root -> print_status_G
 
 
 # Graph Engine
@@ -76,18 +76,17 @@ rlp -> collect all nodes with type=MODULE ->  perform ss embed_description to
 
 
 # Collector remote
-receive list query
-- loop all nodes of the graph embed nid local  perform similarity-serach(ss) ->
-  save all in dict(nid:score)
-- loop nids with sc > .9:  
-  - include a pathfinding algirithmus whcih receivesa nid of a specific datatype e.g. class->get_node(nid) -> get_neighbors rel="needs" -> collect neighbor nodes global in class attr "self.pathway_nodes"-> repeat process from AAA; output: all nods used by a specific datatype (like class) and allits sub modules  
-  - for all params used(method/class header) by specific datatype: collect data from .env file (open...)
-  - collect the sorted and runnable code structure incl all variables as str -> return
+INGEST list query (rlp).
+SEARCH & SCORE: ITERATE through ALL graph nodes. EMBED node ID (nid) locally and PERFORM Similarity Search (ss) against the query embedding. STORE results in dict(nid: score).
+FILTER & PATHFIND: ITERATE through nids where score > 0.9.
+EXECUTE bidirectional pathfinding algorithm (get_neighbors rel="needs") starting from each high-score nid (e.g., class/method). AGGREGATE all dependency nodes (including sub-modules) into self.pathway_nodes.
+DATA RESOLUTION: EXTRACT required variable data for collected components (method/class headers) directly from the .env file (Ensure missing variables are flagged).
+ASSEMBLE & RETURN: TOPOLOGICALLY SORT and COMBINE all retrieved code components and resolved variables into a single, runnable code string. RETURN the code string.
 
- 
+
+FUNCITONALITIES:
 # Executor remote
 - rcs -> create runnable end executes the sorted codebase to avoid any issues(like import error) inside a ray.remote -> ADD_CODE_GRAPH(with adapted code)
-
 
 # editor
 - rcs -> llm call gem cli py client: static prompt: perform change on files -> ADD_CODE_GRAPH(generated code content)
@@ -96,7 +95,6 @@ receive list query
 # creator 
 - rlp -> gem api call: create code base -> ADD_CODE_GRAPH
 
- 
 
 # ui
 **terminal based ui to interact with the engine:**
@@ -107,6 +105,7 @@ receive list query
 - render possible options numbered 
 - answer / follow up question handling
 - direct entry point to Relay 
+
   
 # Debugger remote
 - while loop runnable current code content entire Graph -> execute in subprocess each workflow -> check traceback and debug wih a gem instance within a while loop (include global debbug instructions in each iter)
