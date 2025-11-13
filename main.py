@@ -9,7 +9,7 @@ from typing import List, Dict, Any, Tuple
 # --- Configuration & Mocks ---
 
 # Define the local directory to scan for Python files (used for demonstration)
-TARGET_DIR = r"C:\Users\bestb\PycharmProjects\coder"
+TARGET_DIR = r""
 
 
 def sanitize_path(path: str) -> str:
