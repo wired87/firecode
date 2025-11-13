@@ -70,7 +70,7 @@ COLLECTOR -> llm request with specific code - attr values as input to adapt (anw
 - rlp -> gem api call: create code base -> ADD_CODE_GRAPH
 
 # Run
-COLLECTOR -> loop graph code content for programming language -> create suitable env (e.g. for js: compile code start local server -> open browser to render changes OR py: figure out the main method -> run it) -> write output to Globac
+COLLECTOR -> loop graph code content for programming language -> create suitable env (e.g. for js: compile code (webpack) -> start local server -> open browser to render changes OR py: figure out the main method -> run it) -> write output to Globac
 
 # qa 
 - - static_prmpt: answer the questions based on user query
