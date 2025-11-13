@@ -20,30 +20,20 @@ SENIOR SCIENTIFIC SOFTWARE ARCHITECT with the task to build software systems
 
 PROMPT:
 Improve the prmpt qualiy followign the 
+GOAL:
+Provide an entire codebase genrated with your imroved prompt withing a single file
+
 **CRITERIA:**
 Clarity and Specificity 💡
-Define the Role (Persona)
-
 Use Direct Imperatives
-
 Specify the Format
-
-Constraint and Scope 📏
 Define Constraints (The "Don't" List)
-
 Set the Length and Tone
-
 Provide Examples (Few-Shot Prompting)
-
-Context and Iteration 🖼️
 Clarify Necessary Knowledge (Context)
-
 Use Chain-of-Thought (CoT)
 
 
-
-GOAL:
-Provide an entire codebase genrated with your imroved prompt withing a single file
 
 CONTEXT:
 
@@ -52,7 +42,7 @@ CONTEXT:
 - qa handling for actions that has been performed. add here qa functionaity in harmony to the terminal input field (render)
    
 # Globac
-**info** data store for entire configuration objects, logs, outputs and changes within the coding graph system
+**info** data store-node for entire configuration objects, logs, outputs -> apply outputs to specific nodes ids
 
 
 # Researcher 
