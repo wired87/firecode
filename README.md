@@ -97,20 +97,25 @@ run the extend and inmproved prompt to ensure functionality
 
 
 # extras:
-- main call altiems starts the cli. - user controlls the run of specific functinality based on its quwery input 
-- use clear oneliner comments before each fuction/method call and at the start of each method to intepret
-- use creative prints with emojicons
-- check avoid errors
-- include the entire setup to init and run ray 
-- include a r.txt (requiremens)
-- proviede working ready2use code
-- define the entire codebase inside a single file
-- each worker must be deployed from 
-- define a clear step by step workflow hat executes each possibel cli action wrapped isnide a testing def and if name amin call
-- include funcitnoality to load picked datatypes(fucntions & classes) for all defined workflows inisde a ray.remote
-- define each defined workflow inside a ray.remote
-- use the coding schema of all available files to ensure harmony uniformness
-- include loop
+main call altiems starts the cli. - user controlls the run of specific functinality based on its quwery input
+
+use clear oneliner comments before each fuction/method call and at the start of each method to intepret
+
+use creative prints with emojicons
+
+include the entire setup to init and run ray
+
+define the entire codebase inside a single file
+
+define a clear step by step workflow hat executes each possibel cli action wrapped isnide a testing def and if name amin call
+
+include funcitnoality to load picked datatypes(fucntions & classes) for all defined workflows
+
+
+
+use the provided code as a start template:
+
+
 
 
 
